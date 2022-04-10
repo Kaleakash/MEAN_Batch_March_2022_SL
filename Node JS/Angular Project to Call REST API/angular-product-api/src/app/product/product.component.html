@@ -1,9 +1,39 @@
 <div>
-    <input type="button" value="Load Product Details "
-    (click)="loadProduct()"/>
-    <hr/>
-    <div *ngFor="let product of products">
-        <img src={{product.url}}  width="200px" height="200px"/>
-        <span>Name : {{product.pname}} and Price :{{product.price}}</span>
+    <h2>Add Product</h2>
+    <form [formGroup]="productRef" (ngSubmit)="storeProduct()">
+        <label>PId</label>
+        <input type="number" formControlName="pid"/><br/>
+        <label>PName</label>
+        <input type="text" formControlName="pname"/><br/>
+        <label>Price</label>
+        <input type="number" formControlName="price"/><br/>
+        <label>URL</label>
+        <input type="url" formControlName="url"/><br/>
+        <input type="submit" value="Add Product"/>
+        <input type="reset" value="reset"/>
+    </form>
+    <span style="color:red">{{storeMsg}}</span>
+    <br/>
+    <div *ngIf="flag">
+        <h2>Update Record</h2>
+        <form (ngSubmit)="updateProductDetals()">
+            <label>PId</label>
+            <input type="number" name="pid" [(ngModel)]="pid" readonly/><br/>
+            <label>Price</label>
+            <input type="number" name="price" [(ngModel)]="price"/><br/>
+            <input type="submit" value="update Record"/>
+            <input type="reset" value="reset"/>    
+        </form>
+       
     </div>
+    <span style="color:red">{{updateMsg}}</span>
+    <hr/>
+    <div *ngFor="let product of products" id="obj">
+        <img src={{product.url}} /><br/>
+        <span>Name : {{product.pname}} and Price :{{product.price}}</span><br/>
+        <input type="button" value="Delete Record" (click)="deleteRecord(product.pid)"/>
+        <input type="button" value="Update Record" (click)="updateRecord(product)"/>
+    </div>
+    <br/>
+    <span style="color:red">{{deleteMsg}}</span>
 </div>
