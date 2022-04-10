@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit {
   flag:boolean =false;
   pid:number=0;
   price:number=0;
+  url:string="";
   updateMsg:string ="";
   constructor(public pser:ProductService) { }   // DI for Product Service 
 
@@ -50,15 +51,16 @@ export class ProductComponent implements OnInit {
     //console.log(product);
     this.pid=product.pid;
     this.price=product.price;
+    this.url=product.url;
     this.flag=true;
   }
 
   updateProductDetals(){
-    let product = {pid:this.pid,price:this.price};
+    let product = {pid:this.pid,price:this.price,url:this.url};
     //console.log(product);
     this.pser.updateProductPrice(product).subscribe(data=>this.updateMsg=data.msg,error=>console.log(error),()=>this.loadProduct());
     this.flag=false;
     this.updateMsg="";
-    
+
   }
 }

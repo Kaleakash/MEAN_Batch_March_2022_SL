@@ -32,6 +32,6 @@ export class ProductService {
   }
 
   updateProductPrice(product:any):Observable<any>{
-      return this.http.put("http://localhost:3000/updateProductPrice",product);
+      return this.http.put("http://localhost:3000/updateProduct",product);
   }
 }
