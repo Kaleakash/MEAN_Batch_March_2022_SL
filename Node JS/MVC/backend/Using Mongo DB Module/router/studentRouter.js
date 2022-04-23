@@ -4,7 +4,11 @@ let studentController = require("../controller/studentController"); // controlle
 
 // http://localhost:3000/api/student/storeStudent
 router.post("/storeStudent",studentController.storeStudent);
+// http://localhost:3000/api/student/findAllStudent
+router.get("/findAllStudent",studentController.findAllStudent);
 
+// http://localhost:3000/api/student/updateStudentGrade 
+router.put("/updateStudentGrade",studentController.updateStudentGrade);
 
 module.exports=router;
 
