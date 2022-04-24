@@ -38,3 +38,16 @@ exports.updateStudentGrade = async (req,res)=> {
     }
 }
 
+exports.deleteStudentInfo = async (req,res)=> {
+    let id = req.params._id 
+    try{
+    let result = await studentRepository.deleteStudentDetails(id);
+    if(result.deletedCount>0){
+        res.send("Record deleted successfully");
+    }else {
+        res.send("Record not present didn't delete");
+    }
+    }catch(ex){
+        res.send(ex)
+    }
+}

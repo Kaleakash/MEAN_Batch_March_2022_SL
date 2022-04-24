@@ -10,5 +10,8 @@ router.get("/findAllStudent",studentController.findAllStudent);
 // http://localhost:3000/api/student/updateStudentGrade 
 router.put("/updateStudentGrade",studentController.updateStudentGrade);
 
+// http://localhost:3000/api/student/deleteStudentInfo/1
+
+router.delete("/deleteStudentInfo/:_id",studentController.deleteStudentInfo)
 module.exports=router;
 
