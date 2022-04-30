@@ -40,6 +40,7 @@ exports.updateStudentGrade = async (req,res)=> {
 
 exports.deleteStudentInfo = async (req,res)=> {
     let id = req.params._id 
+    console.log(id);
     try{
     let result = await studentRepository.deleteStudentDetails(id);
     if(result.deletedCount>0){

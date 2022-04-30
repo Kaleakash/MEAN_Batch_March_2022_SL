@@ -1,0 +1,67 @@
+<div>
+
+    <form [formGroup]="studentRef" (ngSubmit)="storeStudentInfo()">
+        <label>SId</label>
+        <input type="number" formControlName="_id"/><br/>
+        <label>FName</label>
+        <input type="text" formControlName="first_name"/><br/>
+        <label>LName</label>
+        <input type="text" formControlName="last_name"/><br/>
+        <label>Class</label>
+        <select formControlName="class">
+                <option *ngFor="let class of classItem" value={{class}}>{{class}}</option>  
+        </select>
+        <br/>
+        <label>Grade</label>
+        <select formControlName="grade">
+            <option *ngFor="let grade of gradeItem" value={{grade}}>{{grade}}</option>  
+        </select><br/>
+        <label>Age</label>
+        <input type="number" formControlName="age"/><br/>
+        <label>Address</label>
+        <textarea formControlName="address">
+
+        </textarea>
+        <br/>
+        <input type="submit" value="store record"/>
+        <input type="reset" value="reset"/>
+    </form>
+    <br/>
+    <span style="color:red">{{storeMsg}}</span>
+    <h2>All Student Details</h2>
+    <table>
+        <tr>
+            <th>SId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Class</th>
+            <th>Grade</th>
+            <th>Age</th>
+            <th>Address</th>
+        </tr>
+        <tr *ngFor="let student of students">
+             <td>{{student._id}}</td>
+             <td>{{student.first_name}}</td>
+             <td>{{student.last_name}}</td>
+             <td>{{student.class}}</td>
+             <td>
+<input type="text" value={{student.grade}} [readonly]="updateFlag" 
+#gradeRef (keyup)="gradeFunction(gradeRef)"/>
+            </td>
+             <td>{{student.age}}</td>
+             <td>{{student.address}}</td>   
+             <td><a href="#" (click)="updateStudentGrade(student)">
+                <img [src]="updateImg" width="50" height="50"/>
+             </a></td>
+             <td>
+                <a href="#" (click)="deleteStudentRecord(student._id)">
+                    <img src="https://c8.alamy.com/comp/T1A8RP/red-cross-graphics-remove-delete-button-icon-editable-vector-T1A8RP.jpg" 
+                    width="50" height="50"/>
+                 </a>
+             </td>
+        </tr>
+    </table>
+    <br/>
+    <span style="color:red">{{updateMsg}}</span>
+    <span style="color:red;">{{deleteMsg}}</span>
+</div>
