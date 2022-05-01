@@ -10,7 +10,16 @@ let signUp = async (req,res)=> {
     }
 }
 
+let signIn = async (req,res )=> {
+    let user = req.body;
+    try {
+        let result = await userRepository.signIn(user);
+        res.json(result);
+    }catch(error){
+        res.json(error);
+    }
+}
 
 
 
-module.exports = {signUp}
+module.exports = {signUp,signIn}
