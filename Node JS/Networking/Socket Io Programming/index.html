@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Conneting external library which is part of node_node folder-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/JavaScript">
+        let socket = io();      // get the reference of socket.
+        // we can send the value using emit function in the form of
+        // key-value pairs. value can be any type. 
+        socket.emit("obj","Welcome to Socket Program");
+        // This code is use to receive the message from server 
+        socket.on("obj1",(msg)=> {
+            //it is use to display the message on client console.
+           // console.log(msg)
+           document.getElementById("abc").innerHTML = msg;
+        })
+    </script>
+</head>
+<body>
+    <h2>Welcome to Simple Socket.IO Programming..</h2>
+    <div id="abc">
+
+    </div>
+</body>
+</html>

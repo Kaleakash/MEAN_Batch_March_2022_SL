@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/JavaScript">
+        // created the reference of web socket
+        let ws = new WebSocket("ws://localhost:8080");
+        ws.onopen = ()=> {
+            // this message display on client borwser. 
+            console.log("Client application send the request to Web Socket server program");
+            // Client send the reqeust to Server...
+            ws.send("Hello Server, I am Client connected to Web Socket Program");
+            sendData = ()=> {
+                let data = document.getElementById("name").value;
+                ws.send(data);
+                document.getElementById("name").value="";
+            }
+        }
+        // This code is use to receive the message from client application 
+        // obj is a reference of message.
+        ws.onmessage=(obj)=> {
+            //console.log(obj);
+            //console.log(obj.data);
+            document.getElementById("obj").innerHTML = obj.data;
+        }
+    </script>
+</head>
+<body>
+    <h2>Welcome Simple Web Socket Programming..</h2>
+    <div id="obj">
+
+    </div>
+    <br/>
+    <input type="text" id="name"/><br/>
+    <input type="button" value="Send Data" onclick="sendData()"/>
+
+</body>
+</html>
+
