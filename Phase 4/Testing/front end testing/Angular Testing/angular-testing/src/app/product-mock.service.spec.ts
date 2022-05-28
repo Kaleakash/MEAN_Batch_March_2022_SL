@@ -28,10 +28,7 @@ describe('ProductMockService', () => {
    let p2:Product = {id:2,title:"B",price:20,description:"Abcd",category:"BB",image:"www.image2.com",rating:{rate:2,count:2}}
    let p3:Product = {id:3,title:"C",price:30,description:"Abcde",category:"CC",image:"www.image3.com",rating:{rate:3,count:3}}
    let products:Array<Product>=[p1,p2,p3];
-   res.flush(products);
+   res.flush(products);   // it it use to provide the fake data to testing method. 
   })
   
-
-   
-
 });
