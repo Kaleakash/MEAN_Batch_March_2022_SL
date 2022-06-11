@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  mynode:
+    image: student-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/code
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data/db
+volumes:
+  mongodb:

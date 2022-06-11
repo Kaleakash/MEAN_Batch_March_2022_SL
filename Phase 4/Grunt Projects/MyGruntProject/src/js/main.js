@@ -1,0 +1,1 @@
+document.write("Wecome to JS")
