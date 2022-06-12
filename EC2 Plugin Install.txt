@@ -1,0 +1,100 @@
+update ec2 instance 
+
+sudo yum -y update
+
+--------------->Git install 
+
+sudo yum install git -y
+
+------------------->Jenkin 
+
+Install Jenkin in EC2 instance 
+
+sudo amazon-linux-extras install epel -y
+
+sudo yum update -y
+
+sudo yum install jenkins java-1.8.0-openjdk-devel
+
+sudo systemctl start jenkins
+
+sudo systemctl status jenkins
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+-----------------------> Node JS 
+
+node --version 
+
+
+install node 
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+or 
+
+. ~/.nvm/nvm.sh
+
+nvm install node		(node version manager)
+ 
+
+or 
+
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+nvm install --lts
+
+
+
+
+-------> Mongo DB install 
+
+sudo yum install -y mongodb-org
+
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/	refer this documentation 
+
+
+sudo yum install -y mongodb-org				: may be file not present 
+
+sudo vi /etc/yum.repos.d/mongodb-org-5.0.repo		: this will create the file 
+
+[mongodb-org-5.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/5.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-5.0.asc
+
+cont key
+:wq!
+
+
+sudo yum install -y mongodb-org
+
+to start the server 
+
+sudo systemctl start mongod
+
+if wait to start 
+
+sudo systemctl daemon-reload
+
+to check the status 
+
+sudo systemctl status mongod
+
+Then to run the application 
+
+mongo 
+
+--------------Docker 
+
+install docker 
+
+sudo yum install docker
+
+sudo service docker start
+
+sudo docker info
+
+
+
